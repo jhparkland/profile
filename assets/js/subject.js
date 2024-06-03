@@ -1,14 +1,14 @@
-document.addEventListener('DOMContentLoaded', function(){
+document.addEventListener('DOMContentLoaded', function () {
     // Loading page
     window.addEventListener("load", () => {
         var load_div = document.querySelector('#loading');
 
-        if(load_div != null){
-            setTimeout(function(){
-                load_div.style.transition = '.75s';
+        if (load_div != null) {
+            setTimeout(function () {
+                load_div.style.transition = '.55s';
                 load_div.style.opacity = '0';
                 load_div.style.visibility = 'hidden';
-            }, 800);
+            }, 300);
         }
     });
 
@@ -27,12 +27,16 @@ document.addEventListener('DOMContentLoaded', function(){
         let currentPage = 1;
 
         const disableButton = (button) => {
-            button.classList.add("disabled");
+            button
+                .classList
+                .add("disabled");
             button.setAttribute("disabled", true);
         };
-        
+
         const enableButton = (button) => {
-            button.classList.remove("disabled");
+            button
+                .classList
+                .remove("disabled");
             button.removeAttribute("disabled");
         };
 
@@ -42,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function(){
             } else {
                 enableButton(prevButton);
             }
-        
+
             if (pageCount === currentPage) {
                 disableButton(nextButton);
             } else {
@@ -51,15 +55,21 @@ document.addEventListener('DOMContentLoaded', function(){
         };
 
         const handleActivePageNumber = () => {
-            document.querySelectorAll(".pagination-number").forEach((button) => {
-                button.classList.remove("active");
-                
-                const pageIndex = Number(button.getAttribute("page-index"));
+            document
+                .querySelectorAll(".pagination-number")
+                .forEach((button) => {
+                    button
+                        .classList
+                        .remove("active");
 
-                if (pageIndex == currentPage) {
-                    button.classList.add("active");
-                }
-            });
+                    const pageIndex = Number(button.getAttribute("page-index"));
+
+                    if (pageIndex == currentPage) {
+                        button
+                            .classList
+                            .add("active");
+                    }
+                });
         };
 
         const appendPageNumber = (index) => {
@@ -81,7 +91,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
         const setCurrentPage = (pageNum) => {
             currentPage = pageNum;
-            
+
             handleActivePageNumber();
             handlePageButtonsStatus();
 
@@ -89,21 +99,24 @@ document.addEventListener('DOMContentLoaded', function(){
             const currRange = pageNum * paginationLimit;
 
             listItems.forEach((item, index) => {
-                item.classList.add("hidden");
+                item
+                    .classList
+                    .add("hidden");
 
                 if (index >= prevRange && index < currRange) {
-                    item.classList.remove("hidden");
+                    item
+                        .classList
+                        .remove("hidden");
                 }
             });
 
-            window.scrollTo({top:0});
+            window.scrollTo({top: 0});
             localStorage.setItem(pageKey, currentPage);
         };
 
         window.addEventListener("load", (event) => {
             // Load last visited page number
-            if (event.persisted 
-            || (window.performance && window.performance.navigation.type == 2)) {
+            if (event.persisted || (window.performance && window.performance.navigation.type == 2)) {
                 currentPage = localStorage.getItem(pageKey);
             }
 
@@ -113,20 +126,22 @@ document.addEventListener('DOMContentLoaded', function(){
             prevButton.addEventListener("click", () => {
                 setCurrentPage(currentPage - 1);
             });
-            
+
             nextButton.addEventListener("click", () => {
                 setCurrentPage(currentPage + 1);
             });
 
-            document.querySelectorAll(".pagination-number").forEach((button) => {
-                const pageIndex = Number(button.getAttribute("page-index"));
+            document
+                .querySelectorAll(".pagination-number")
+                .forEach((button) => {
+                    const pageIndex = Number(button.getAttribute("page-index"));
 
-                if (pageIndex) {
-                    button.addEventListener("click", () => {
-                        setCurrentPage(pageIndex);
-                    });
-                }
-            });
+                    if (pageIndex) {
+                        button.addEventListener("click", () => {
+                            setCurrentPage(pageIndex);
+                        });
+                    }
+                });
         });
     }
 });
