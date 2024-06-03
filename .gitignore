@@ -1,0 +1,12 @@
+# Jekyll
+_site/
+.sass-cache
+.jekyll-cache
+.jekyll-metadata
+.bundle
+*.gem
+Gemfile.lock
+vendor
+.firebaserc
+firebase.json
+.firebase/
