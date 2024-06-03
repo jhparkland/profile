@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function(){
+document.addEventListener('DOMContentLoaded', function () {
     // typing effect
     var blank_msgs = document.querySelectorAll('p');
     var typing_speed = 50;
