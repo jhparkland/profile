@@ -11,7 +11,7 @@ bookmark: true
 ---
 
 <figure> 
-    <img src="/assets/img/paper/IEEE CLOUD.png" alt="IEEE CLOUD" style="width:378px; height:293px;"> -->
+    <img src="/assets/img/paper/IEEE CLOUD.png" alt="IEEE CLOUD" style="width:378px; height:293px;">
     <figcaption align='center'>The Overview of the proposed method(CAFTM)</figcaption>
 </figure>
 
